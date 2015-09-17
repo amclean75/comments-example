@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 before_action :set_post, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, only: [:new, :create, :destroy]
+
   def index
 	  @posts = Post.all 
   end
@@ -25,10 +27,15 @@ before_action :set_post, only: [:show, :edit, :update, :destroy]
   end
   
   def destroy 
-	  
+	  @post.destroy 
+		redirect_to posts_path, notice: "Post was deleted."
   end
   
   private 
+  
+  def post_params
+	    params.require(:post).permit(:body).merge(user:current_user)
+  end
   
   def set_post
 	  @post = Post.find(params[:id])
