@@ -3,7 +3,7 @@ before_action :set_post, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
-	  @posts = Post.all 
+	  @posts = Post.all  
   end
 
   def new
@@ -18,7 +18,7 @@ before_action :authenticate_user!, only: [:new, :create, :destroy]
   end
   
   def create 
-	  @post = Post.create(params.require(:post).permit(:body, :title))
+	  @post = Post.create(post_params)
 	  redirect_to @post, notice: "New post created."
   end
   
@@ -27,6 +27,7 @@ before_action :authenticate_user!, only: [:new, :create, :destroy]
   end
   
   def destroy 
+	  @post = Post.find(params[:id])
 	  @post.destroy 
 		redirect_to posts_path, notice: "Post was deleted."
   end
@@ -34,10 +35,15 @@ before_action :authenticate_user!, only: [:new, :create, :destroy]
   private 
   
   def post_params
-	    params.require(:post).permit(:body).merge(user:current_user)
+	    params.require(:post).permit(:body, :title).merge(user: current_user)
   end
   
   def set_post
+	  begin 
 	  @post = Post.find(params[:id])
+	  rescue 
+	  flash[:notice] = "That post is not available."
+	  redirect_to posts_path
+	  end
   end
 end

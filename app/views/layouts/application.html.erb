@@ -9,6 +9,7 @@
 <body>
 	<header>
 		<%= link_to "Comments-example", root_path %>
+		<%= link_to "User List", users_path %>
 		<nav>
 			<% if current_user %>
 				<span>Hello <%= link_to current_user.username, user_path(current_user.id) %></span>

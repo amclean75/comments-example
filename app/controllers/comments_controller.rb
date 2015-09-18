@@ -7,7 +7,8 @@ def create
 end
 
 def destroy 
-
+	Comment.destroy 
+	redirect_to @post, notice: "That comment was deleted."
 end
 
 
