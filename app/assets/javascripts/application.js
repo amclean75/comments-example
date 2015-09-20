@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on("page:change", function() {
+	// $(".form-style-6").show("slide", { direction: "down" }, 1000);
+	$(".form-style-6").show(1000);
+});

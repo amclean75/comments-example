@@ -1,32 +1,34 @@
+<div class="form-style-6">
 <%= form_for @user do |f| %>
 
-<p>
-	<%= f.label :username %>
-	<%= f.text_field :username %>
-</p>
-
-<p>
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-</p>
-
-<p>
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-</p>
-
-<p>
-	<%= f.label :location %>
-	<%= f.text_field :location %>
-</p>
-
-<p>
-	<%= f.label :bio %><br>
-	<%= f.text_area :bio %>
-</p>
-
-<p>
-	<%= f.submit @user.new_record? ? "sign up" : "edit account" %>
-</p>
+	<p>
+		<%= f.label :username %>
+		<%= f.text_field :username %>
+	</p>
+	
+	<p>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</p>
+	
+	<p>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</p>
+	
+	<p>
+		<%= f.label :location %>
+		<%= f.text_field :location %>
+	</p>
+	
+	<p>
+		<%= f.label :bio %><br>
+		<%= f.text_area :bio %>
+	</p>
+	
+	<p>
+		<%= f.submit @user.new_record? ? "sign up" : "edit account" %>
+	</p>
 	
 <% end %>
+</div>

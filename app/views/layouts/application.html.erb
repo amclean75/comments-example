@@ -8,11 +8,20 @@
 </head>
 <body>
 	<header>
-		<%= link_to "Comments-example", root_path %>
-		<%= link_to "User List", users_path %>
-		<nav>
+		
+		<div id="welcome">
+				<%if session[:user_id] != nil %>
+					<p>Welcome Back <%= current_user.username %></p>
+				<%else%>
+					<p>Beach Blog!</p>
+				<%end%>
+		</div>
+
+				<nav>
+			<%= link_to "Comments-example", root_path %>
+			<%= link_to "User List", users_path %>
+
 			<% if current_user %>
-				<span>Hello <%= link_to current_user.username, user_path(current_user.id) %></span>
 				<%=link_to "sign out", sessions_path, method: :delete %>
 				<%=link_to "new post", new_post_path %>
 			<% else %>

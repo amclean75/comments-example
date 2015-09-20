@@ -1,20 +1,23 @@
-<h1><%= link_to @post.user.username, user_path(@post.user) %></h1>
-<h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
-<p><%= link_to 'Delete', post_path(@post), :method => :delete %></p>
-
-<h3>New Comment</h3>
-<%= form_for [@post, @comment] do |f| %>
-	<%= f.text_area :body %><br>
-	<%= f.submit %>
-<% end %>
-
-<h3>Comments</h3>
-<% @post.comments.each do |comment| %>
-	<p><%= comment.body %></p>
- 	<p><%= link_to "Delete", post_comment_path(comment_id: @comment.id, post_id: comment.post.id) %></p>
-	<hr>
-<% end %>
-
+<br>
+<br>
+<div class="center">
+	<h1><%= link_to @post.user.username, user_path(@post.user) %></h1>
+	<h1><%= @post.title %></h1>
+		<p><%= @post.body %></p>
+		<p><%= link_to 'Delete', post_path(@post), :method => :delete %></p>
+	
+		<h3>New Comment</h3>
+			<%= form_for [@post, @comment] do |f| %>
+			<%= f.text_area :body %><br>
+			<%= f.submit %>
+		<% end %>
+	
+		<h3>Comments</h3>
+			<% @post.comments.each do |comment| %>
+				<p><%= comment.body %></p>
+			 	<p><%= link_to "Delete", post_comment_path(comment_id: @comment.id, post_id: comment.post.id) %></p>
+				<hr>
+			<% end %>
+</div>
 
 

@@ -1,3 +1,6 @@
 <h1>New Post</h1>
-<%= render "form" %>
-<%= link_to "cancel", user_path(current_user.id) %>
+	<%= render "form" %>
+		<br>
+		<div class="cancel">
+			<%= link_to "cancel", user_path(current_user.id) %>
+		</div>

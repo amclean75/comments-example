@@ -1,7 +1,11 @@
 <h1>Editing <%= @user.username %></h1>
 
-<%= render "form" %>
-<p><%= link_to "cancel", users_path %></p>
+	<%= render "form" %>
 
-<h3><%= link_to "Close Your Account", @user, method: :delete, data: {confirm: "Are you sure?"} %></h3>
+	<div class="cancel">
+		<p><%= link_to "cancel", users_path %></p>
+	
+		<h3><%= link_to "Close Your Account", @user, method: :delete, data: {confirm: "Are you sure?"} %></h3>
+	
+	</div>
 
