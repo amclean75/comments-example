@@ -7,8 +7,13 @@ def create
 end
 
 def destroy 
-	Comment.destroy 
-	redirect_to @post, notice: "That comment was deleted."
+	@post = Post.find(params[:post_id])
+	@comment = Comment.find(params[:id]) 
+	if @comment.destroy
+		redirect_to @post, notice: "That comment was deleted."
+	else
+		redirect_to @post, notice: "Something went wrong!"
+	end
 end
 
 
